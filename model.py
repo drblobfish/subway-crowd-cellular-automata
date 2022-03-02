@@ -7,6 +7,7 @@ from collections import defaultdict
 from agents import AGENT
 from restCell import RESTCELL
 from metroGenerator import METROGENERATOR
+from plotManager import PLOTMANAGER
 
 class MODEL() :
     def __init__(self,n,m) -> None:
@@ -16,9 +17,10 @@ class MODEL() :
         self.agents = []
         self.restCells = []
         self.comfort = np.zeros((self.n,self.m))
-        self.walls = np.zeros((self.n,self.m))
+        self.walls = np.zeros((self.n,self.m),dtype=int)
 
         self.verbose = True
+        self.plotManager = PLOTMANAGER()
     
     def newStep(self):
         self.computeComfortMatrix()
@@ -30,22 +32,27 @@ class MODEL() :
         self.solveConflictAndMoveAgent()
 
         if self.verbose:
-            print()
-            print("Comfort Matrix")
-            print(mymodel.comfort)
+            self.log()
 
-            print("Agent Goal")
-            for agent in mymodel.agents:
-                print(agent.goal)
+    
+    def log(self) -> None:
+        print()
+        print("Comfort Matrix")
+        print(self.comfort)
 
-            print("Agent Next Moves")
-            for agent in mymodel.agents:
-                print(agent.newPos)
-            
-            print("New agent position")
-            for agent in mymodel.agents:
-                print(agent.pos)
-            print()
+        print("Agent Goal")
+        for agent in self.agents:
+            print(agent.goal)
+
+        print("Agent Next Moves")
+        for agent in self.agents:
+            print(agent.newPos)
+        
+        print("New agent position")
+        for agent in self.agents:
+            print(agent.pos)
+        print()
+
     
     def computeComfortMatrix(self) -> None:
         self.comfort = np.zeros((self.n,self.m))
@@ -99,6 +106,9 @@ class MODEL() :
         plt.title("Plot 2D array of our metro")
         plt.colorbar()
         plt.show()
+    
+    def plot_Nb(self):
+        self.plotManager.plotNb(self)
 
 
 if __name__ == "__main__":
