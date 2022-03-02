@@ -17,6 +17,8 @@ class MODEL() :
         self.restCells = []
         self.comfort = np.zeros((self.n,self.m))
         self.walls = np.zeros((self.n,self.m))
+
+        self.verbose = True
     
     def newStep(self):
         self.computeComfortMatrix()
@@ -26,8 +28,27 @@ class MODEL() :
         self.findNewPosForEachAgent()
 
         self.solveConflictAndMoveAgent()
+
+        if self.verbose:
+            print()
+            print("Comfort Matrix")
+            print(mymodel.comfort)
+
+            print("Agent Goal")
+            for agent in mymodel.agents:
+                print(agent.goal)
+
+            print("Agent Next Moves")
+            for agent in mymodel.agents:
+                print(agent.newPos)
+            
+            print("New agent position")
+            for agent in mymodel.agents:
+                print(agent.pos)
+            print()
     
     def computeComfortMatrix(self) -> None:
+        self.comfort = np.zeros((self.n,self.m))
         #if it's an agent, we lower the comfort :
         for agent in self.agents:
             for i in [-1,0,1] :
@@ -84,24 +105,6 @@ if __name__ == "__main__":
     mymodel = MODEL(3,4)
     mymodel.agents = [AGENT((0,0),mymodel),AGENT((1,1),mymodel)]
     mymodel.restCells = [RESTCELL((1,0),15)]
-    mymodel.computeComfortMatrix()
-    print()
-    print("Comfort Matrix")
-    print(mymodel.comfort)
-    mymodel.findGoalForEachAgent()
-    print("Agent Goal")
-    for agent in mymodel.agents:
-        print(agent.goal)
     
-    print("Agent Next Moves")
-    mymodel.findNewPosForEachAgent()
-    for agent in mymodel.agents:
-        print(agent.newPos)
-    
-    print("Conflicts")
-    mymodel.solveConflictAndMoveAgent()
-
-    print("New agent position")
-    for agent in mymodel.agents:
-        print(agent.pos)
-    print()
+    mymodel.newStep()
+    mymodel.newStep()
