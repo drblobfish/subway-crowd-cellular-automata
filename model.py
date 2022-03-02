@@ -39,7 +39,7 @@ class MODEL() :
         #if it's a restcell, we add the value of its comfort: 
         for restCell in self.restCells:
                 #we add K_r to the comfort matrix  
-            self.comfort[restCell.pos[0], restCell.pos[1]]=c.K_r
+            self.comfort[restCell.pos]+=restCell.K_r
 
         return self.comfort
     
@@ -68,4 +68,5 @@ class MODEL() :
 if __name__ == "__main__":
     mymodel = MODEL(3,4)
     mymodel.agents = [AGENT((0,0),mymodel),AGENT((1,2),mymodel)]
+    mymodel.restCells = [RESTCELL((1,0),7)]
     print(mymodel.computeComfortMatrix())
