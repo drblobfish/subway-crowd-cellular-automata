@@ -29,9 +29,10 @@ class MODEL() :
     def computeComfortMatrix(self) -> np.array :
         #if it's an agent, we lower the comfort :
         for agent in self.agents:
-            for i in range (-1,1,1) & j in range (-1,1,1) :
-                moore = [agent.posx+i, agent.posy+j]
-                self.comfort[moore]= -5  
+            for i in range (-1,1,1) :
+                for j in range (-1,1,1):
+                    moore = [agent.posx+i, agent.posy+j]
+                    self.comfort[moore]= -5  
             
         #if it's a restcell, we add the value of its comfort: 
         for restCell in self.restCells:
