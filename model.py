@@ -18,7 +18,7 @@ class MODEL() :
         self.walls = np.zeros((self.n,self.m))
     
     def newStep(self):
-        self.comfort = self.computeComfortMat()
+        self.comfort = self.computeComfortMatrix()
 
         self.findGoalForEachAgent()
 
@@ -26,7 +26,7 @@ class MODEL() :
 
         self.solveConflict()
     
-    def computeComfortMat(self) -> np.array :
+    def computeComfortMatrix(self) -> np.array :
         ...
         return 
     
@@ -39,7 +39,7 @@ class MODEL() :
         self.conflict = defaultdict(lambda : [])
         for agent in self.agents:
             pos = agent.findNewPos(self.walls)
-            self.conflict[agent].append(agent)
+            self.conflict[pos].append(agent)
     
     def solveConflict(self) -> None :
         #For each conflict (elements of self.conflict that have a lenth > 1)
