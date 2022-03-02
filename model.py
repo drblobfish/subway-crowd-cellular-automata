@@ -65,7 +65,7 @@ class MODEL() :
 #pour l'instant le wagon est vide, il faut designer le metroGenerator
 end_disposition=np.zeros((self.n,self.m)) #à remplacer par la metromap définie dans metroGenerator 
 for agent in self.agents:
-    end_disposition[restCell.pos]=2
+    end_disposition[agent.pos]=2
 
 fig = plt.figure(figsize=(8,6))
 plt.imshow(X,cmap="inferno")
