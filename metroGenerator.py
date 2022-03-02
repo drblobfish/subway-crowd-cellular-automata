@@ -1,5 +1,7 @@
-class METROGENERATOR(self,pos,value,n,m):
-    def __init__(self,pos,value) -> None:
+import numpy as np
+
+class METROGENERATOR():
+    def __init__(self,pos,value,n,m) -> None:
         self.pos = pos
         self.n = n
         self.m = m
