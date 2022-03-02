@@ -31,8 +31,9 @@ class MODEL() :
         for agent in self.agents:
             for i in range (-1,1,1) :
                 for j in range (-1,1,1):
-                    moore = [agent.posx+i, agent.posy+j]
-                    self.comfort[moore]= -5  
+                    if (0<=agent.posx+i<=self.n & 0<=agent.pos+j<=self.m) == True :
+                        moore = [agent.posx+i, agent.posy+j]
+                        self.comfort[moore]= -5  
             
         #if it's a restcell, we add the value of its comfort: 
         for restCell in self.restCells:
@@ -51,6 +52,10 @@ class MODEL() :
         for agent in self.agents:
             pos = agent.findNewPos(self.walls)
             self.conflict[pos].append(agent)
+    
+    def isValidPosition(self,pos : tuple) -> bool:
+        # check if position pos is in the range of our grid
+        return ((0<=pos[0]<self.n) and (0<=pos[1]<self.m))
     
     def solveConflict(self) -> None :
         #For each conflict (elements of self.conflict that have a lenth > 1)
