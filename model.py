@@ -32,9 +32,8 @@ class MODEL() :
             for i in [-1,0,1] :
                 for j in [-1,0,1]:
                     moore = (agent.pos[0]+i, agent.pos[1]+j)
-                    print(moore)
                     if self.isValidPosition(moore) :
-                        self.comfort[moore]+= -5  
+                        self.comfort[moore]+= -5
             
         #if it's a restcell, we add the value of its comfort: 
         for restCell in self.restCells:
@@ -49,7 +48,7 @@ class MODEL() :
 
         self.conflict = defaultdict(lambda : [])
         for agent in self.agents:
-            pos = agent.findNewPos(self.walls)
+            pos = agent.findNewPos()
             self.conflict[pos].append(agent)
     
     def isValidPosition(self,pos : tuple) -> bool:
@@ -66,5 +65,13 @@ class MODEL() :
 if __name__ == "__main__":
     mymodel = MODEL(3,4)
     mymodel.agents = [AGENT((0,0),mymodel),AGENT((1,2),mymodel)]
-    mymodel.restCells = [RESTCELL((1,0),7)]
-    print(mymodel.computeComfortMatrix())
+    mymodel.restCells = [RESTCELL((1,0),7), RESTCELL((0,3),7)]
+    mymodel.computeComfortMatrix()
+    print(mymodel.comfort)
+    mymodel.findGoalForEachAgent()
+    for agent in mymodel.agents:
+        print(agent.goal)
+    
+    mymodel.findNewPosForEachAgent()
+    for agent in mymodel.agents:
+        print(agent.newPos)
