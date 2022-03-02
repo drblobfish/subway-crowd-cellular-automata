@@ -18,7 +18,7 @@ class MODEL() :
         self.walls = np.zeros((self.n,self.m))
     
     def newStep(self):
-        self.comfort = self.computeComfortMatrix()
+        self.computeComfortMatrix()
         
         self.findGoalForEachAgent()
 
@@ -26,7 +26,7 @@ class MODEL() :
 
         self.solveConflict()
     
-    def computeComfortMatrix(self) -> np.array :
+    def computeComfortMatrix(self) -> None:
         #if it's an agent, we lower the comfort :
         for agent in self.agents:
             for i in [-1,0,1] :
@@ -40,8 +40,6 @@ class MODEL() :
         for restCell in self.restCells:
                 #we add K_r to the comfort matrix  
             self.comfort[restCell.pos]+=restCell.K_r
-
-        return self.comfort
     
     def findGoalForEachAgent(self) -> None :
         for agent in self.agents:
