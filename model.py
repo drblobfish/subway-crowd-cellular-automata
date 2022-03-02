@@ -19,7 +19,7 @@ class MODEL() :
     
     def newStep(self):
         self.comfort = self.computeComfortMatrix()
-
+        
         self.findGoalForEachAgent()
 
         self.findNewPosForEachAgent()
@@ -27,8 +27,18 @@ class MODEL() :
         self.solveConflict()
     
     def computeComfortMatrix(self) -> np.array :
-        ...
-        return 
+        #if it's an agent, we lower the comfort :
+        for agent in self.agents:
+            for i in range (-1,1,1) & j in range (-1,1,1) :
+                moore = [agent.posx+i, agent.posy+j]
+                self.comfort[moore]= -5  
+            
+        #if it's a restcell, we add the value of its comfort: 
+        for restCell in self.restCells:
+                #we add K_r to the comfort matrix  
+            self.comfort[restCell.posx, restCell.posy]=c.K_r
+
+        return self.comfort
     
     def findGoalForEachAgent(self) -> None :
         for agent in self.agents:

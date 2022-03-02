@@ -1,0 +1,4 @@
+class WALLS():
+    def __init__(self,pos,value) -> None:
+        self.pos = pos
+        self.value = 
