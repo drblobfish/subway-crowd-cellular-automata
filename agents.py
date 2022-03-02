@@ -1,5 +1,6 @@
 import operator
 import math
+import numpy as np
 
 
 class AGENT():
@@ -15,7 +16,7 @@ class AGENT():
             distance = {} 
             for i in range(0, len(higher_value[0])):
                 (x1,y2) = (higher_value[0][i],higher_value[1][i])
-                distance[x1,y2] = ((x1 - agent.posx)**2 + (y2 - agent.posy)**2)**0.5
+                distance[x1,y2] = self.dist((x1,y2))
             self.goal = min(distance, key = distance.get)
         return self.goal
 
