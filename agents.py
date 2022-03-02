@@ -1,9 +1,11 @@
-import numpy as np
 import operator
+import math
+
 
 class AGENT():
-    def __init__(self,pos ) -> None:
+    def __init__(self,pos,model ) -> None:
         self.pos = pos
+        self.model = model
 
     def findGoal(self):
         higher_value = np.where(self.comfort == np.max(self.comfort))
@@ -19,5 +21,12 @@ class AGENT():
 
 
     def findNewPos(self):
-        self.newPos = ...
+        moore = [(self.pos[0]+i,self.pos[0]+j) for i in [-1,0,1] for j in [-1,0,1]]
+        boudaryCells = [pos for pos in moore if self.model.isValidPosition(pos)]
+        possibleCells = [pos for pos in boudaryCells if (not self.model.walls[pos])]
+        
+        self.newPos = min(possibleCells,key=lambda pos : self.dist(pos))
         return self.newPos
+    
+    def dist(self,pos):
+        return math.sqrt( (pos[0]-self.pos[0])**2 +(pos[1]-self.pos[1])**2 ) 
