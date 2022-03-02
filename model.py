@@ -52,6 +52,9 @@ class MODEL() :
             pos = agent.findNewPos(self.walls)
             self.conflict[pos].append(agent)
     
+    def isValidPosition(self,pos : tuple) -> bool:
+        return ((0<=pos[0]<self.n) and (0<=pos[1]<self.m))
+    
     def solveConflict(self) -> None :
         #For each conflict (elements of self.conflict that have a lenth > 1)
         # Solve them by choosing a random agent
