@@ -1,3 +1,6 @@
 # Ignore pycache
 __pycache__/
 *.py[cod]
+
+# Ignore jupyter shenanigans
+.ipynb_checkpoints/
