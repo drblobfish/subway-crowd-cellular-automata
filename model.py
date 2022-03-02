@@ -29,16 +29,17 @@ class MODEL() :
     def computeComfortMatrix(self) -> np.array :
         #if it's an agent, we lower the comfort :
         for agent in self.agents:
-            for i in range (-1,1,1) :
-                for j in range (-1,1,1):
-                    if (0<=agent.posx+i<=self.n & 0<=agent.pos+j<=self.m) == True :
-                        moore = [agent.posx+i, agent.posy+j]
-                        self.comfort[moore]= -5  
+            for i in [-1,0,1] :
+                for j in [-1,0,1]:
+                    moore = (agent.pos[0]+i, agent.pos[1]+j)
+                    print(moore)
+                    if self.isValidPosition(moore) :
+                        self.comfort[moore]+= -5  
             
         #if it's a restcell, we add the value of its comfort: 
         for restCell in self.restCells:
                 #we add K_r to the comfort matrix  
-            self.comfort[restCell.posx, restCell.posy]=c.K_r
+            self.comfort[restCell.pos[0], restCell.pos[1]]=c.K_r
 
         return self.comfort
     
@@ -62,3 +63,9 @@ class MODEL() :
         # Solve them by choosing a random agent
         # and the revert the newPos of the other agents to the current position
         pass
+
+
+if __name__ == "__main__":
+    mymodel = MODEL(3,4)
+    mymodel.agents = [AGENT((0,0),mymodel),AGENT((1,2),mymodel)]
+    print(mymodel.computeComfortMatrix())
