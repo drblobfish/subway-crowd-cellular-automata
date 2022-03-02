@@ -31,6 +31,7 @@ class MODEL() :
         for agent in self.agents:
             for i in range (-1,1,1) :
                 for j in range (-1,1,1):
+                    if (0<=agent.posx+i<=self.n & 0<=agent.pos+j<=self.m) == True :
                     moore = [agent.posx+i, agent.posy+j]
                     self.comfort[moore]= -5  
             
