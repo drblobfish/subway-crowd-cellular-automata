@@ -7,12 +7,12 @@ class AGENT():
         self.pos = pos
         self.model = model
 
-    def findGoal(self):
-        higher_value = np.where(self.comfort == np.max(self.comfort))
-        if len(higher_value[0]) == 2:
+    def findGoal(self,comfort):
+        higher_value = np.where(comfort == np.max(comfort))
+        if len(higher_value[0]) == 1:
             self.goal = (higher_value[0][0],higher_value[1][0])
         else :
-            distance = {} 
+            distance = {}
             for i in range(0, len(higher_value[0])):
                 (x1,y2) = (higher_value[0][i],higher_value[1][i])
                 distance[x1,y2] = self.dist((x1,y2))
@@ -21,12 +21,19 @@ class AGENT():
 
 
     def findNewPos(self):
-        moore = [(self.pos[0]+i,self.pos[0]+j) for i in [-1,0,1] for j in [-1,0,1]]
-        boudaryCells = [pos for pos in moore if self.model.isValidPosition(pos)]
-        possibleCells = [pos for pos in boudaryCells if (not self.model.walls[pos])]
-        
-        self.newPos = min(possibleCells,key=lambda pos : self.dist(pos))
+        min_dist = self.model.n + self.model.m
+        for i in [-1,0,1]:
+            for j in [-1,0,1]:
+                pos = (self.pos[0]+i,self.pos[0]+j)
+                if self.model.isValidPosition(pos) and (not self.model.walls[pos]):
+                    dist = self.dist_btw(pos,self.goal)
+                    if dist<min_dist:
+                        min_dist=dist
+                        self.newPos = pos
         return self.newPos
     
     def dist(self,pos):
-        return math.sqrt( (pos[0]-self.pos[0])**2 +(pos[1]-self.pos[1])**2 ) 
+        return self.dist_btw(pos,self.pos)
+    
+    def dist_btw(self,vec1,vec2):
+        return math.sqrt( (vec1[0]-vec2[0])**2 +(vec1[1]-vec2[1])**2 ) 
