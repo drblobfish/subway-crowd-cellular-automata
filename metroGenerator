@@ -1,4 +1,4 @@
-class metro_generator(self,pos,value,n,m):
+class METROGENERATOR(self,pos,value,n,m):
     def __init__(self,pos,value) -> None:
         self.pos = pos
         self.n = n
@@ -6,7 +6,7 @@ class metro_generator(self,pos,value,n,m):
         #on veut que les murs aient pour valeur 1 
         #ça veut dire, toutes les cellules qui ont pour abscisse 0 et n
         # et pour toutes les cellules qui ont pour ordonnée 0 et m
-        self.metro = np.zeros((self.n,self.m))
+        self.metromap = np.zeros((self.n,self.m))
         for k in self.metro :
             for i in range (0,n):
                 if k.pos ==(i,0):
@@ -18,3 +18,4 @@ class metro_generator(self,pos,value,n,m):
                     self.value = 1
                 elif self.pos==(n,j):
                     self.value = 1
+        return self.metromap

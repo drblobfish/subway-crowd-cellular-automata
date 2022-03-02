@@ -1,12 +1,12 @@
 import random as rnd
 import constant as c
-
+import matplotlib.pyplot as plt
 import numpy as np
 from collections import defaultdict
 
 from agents import AGENT
 from restCell import RESTCELL
-
+from metroGenerator import METROGENERATOR
 
 class MODEL() :
     def __init__(self,n,m) -> None:
@@ -65,6 +65,18 @@ class MODEL() :
             for i,agent in enumerate(agents):
                 if i == randomIndex :
                     agent.pos = agent.newPos
+
+#étape finale : faire une fonction qui plot ce à quoi ressemble notre wagon à la fin 
+#pour l'instant le wagon est vide, il faut designer le metroGenerator
+end_disposition=np.zeros((self.n,self.m)) #à remplacer par la metromap définie dans metroGenerator 
+for agent in self.agents:
+    end_disposition[agent.pos]=2
+
+fig = plt.figure(figsize=(8,6))
+plt.imshow(X,cmap="inferno")
+plt.title("Plot 2D array of our metro")
+plt.colorbar()
+plt.show()
 
 
 if __name__ == "__main__":
