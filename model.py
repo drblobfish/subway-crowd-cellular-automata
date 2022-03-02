@@ -1,3 +1,4 @@
+import random as rnd
 import constant as c
 
 import numpy as np
@@ -24,7 +25,7 @@ class MODEL() :
 
         self.findNewPosForEachAgent()
 
-        self.solveConflict()
+        self.solveConflictAndMoveAgent()
     
     def computeComfortMatrix(self) -> None:
         #if it's an agent, we lower the comfort :
@@ -55,23 +56,39 @@ class MODEL() :
         # check if position pos is in the range of our grid
         return ((0<=pos[0]<self.n) and (0<=pos[1]<self.m))
     
-    def solveConflict(self) -> None :
+    def solveConflictAndMoveAgent(self) -> None :
         #For each conflict (elements of self.conflict that have a lenth > 1)
         # Solve them by choosing a random agent
         # and the revert the newPos of the other agents to the current position
-        pass
+        for pos,agents in self.conflict.items():
+            randomIndex = rnd.randrange(0,len(agents))
+            for i,agent in enumerate(agents):
+                if i == randomIndex :
+                    agent.pos = agent.newPos
 
 
 if __name__ == "__main__":
     mymodel = MODEL(3,4)
-    mymodel.agents = [AGENT((0,0),mymodel),AGENT((1,2),mymodel)]
-    mymodel.restCells = [RESTCELL((1,0),7), RESTCELL((0,3),7)]
+    mymodel.agents = [AGENT((0,0),mymodel),AGENT((1,1),mymodel)]
+    mymodel.restCells = [RESTCELL((1,0),15)]
     mymodel.computeComfortMatrix()
+    print()
+    print("Comfort Matrix")
     print(mymodel.comfort)
     mymodel.findGoalForEachAgent()
+    print("Agent Goal")
     for agent in mymodel.agents:
         print(agent.goal)
     
+    print("Agent Next Moves")
     mymodel.findNewPosForEachAgent()
     for agent in mymodel.agents:
         print(agent.newPos)
+    
+    print("Conflicts")
+    mymodel.solveConflictAndMoveAgent()
+
+    print("New agent position")
+    for agent in mymodel.agents:
+        print(agent.pos)
+    print()
