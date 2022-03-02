@@ -53,6 +53,7 @@ class MODEL() :
             self.conflict[pos].append(agent)
     
     def isValidPosition(self,pos : tuple) -> bool:
+        # check if position pos is in the range of our grid
         return ((0<=pos[0]<self.n) and (0<=pos[1]<self.m))
     
     def solveConflict(self) -> None :
