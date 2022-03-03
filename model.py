@@ -118,6 +118,7 @@ class MODEL() :
     def play_model(self,t):
         for i in range (0,t):
             self.clear() 
+            self.newStep()
             self.plot_Nb()
             sleep(1)
             
