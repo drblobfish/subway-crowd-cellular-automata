@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import constant as c
-
+from restCell import RESTCELL
 
 class AGENT():
     def __init__(self,pos,model,name="" ) -> None:
@@ -26,6 +26,8 @@ class AGENT():
                 (x1,y2) = (higher_value[0][i],higher_value[1][i])
                 distance[x1,y2] = self.dist((x1,y2))
             self.goal = min(distance, key = distance.get)
+        if self.pos == RESTCELL.pos : 
+            self.goal = self.pos 
         return self.goal
 
 
