@@ -9,6 +9,7 @@ class AGENT():
         self.pos = pos
         self.model = model
         self.name = name
+        agent_allowed_to_stand_up= "yes" 
 
     def findGoal(self,comfort):
         comfort = comfort.copy()
@@ -27,7 +28,7 @@ class AGENT():
                 (x1,y2) = (higher_value[0][i],higher_value[1][i])
                 distance[x1,y2] = self.dist((x1,y2))
             self.goal = min(distance, key = distance.get)
-        if self.model.agent_allowed_to_stand_up == "no" :
+        if agent_allowed_to_stand_up == "no" :
             for i in self.model.restCells : 
                 if self.pos == i.pos : 
                     self.goal = self.pos 
