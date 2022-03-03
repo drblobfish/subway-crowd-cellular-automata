@@ -99,6 +99,9 @@ class MODEL() :
             for i,agent in enumerate(agents):
                 if i == randomIndex :
                     agent.pos = agent.newPos
+    
+    def totalComfort(self) :
+        return sum(self.comfort[agent.pos] for agent in self.agents)
 
     def plot(self):
         #étape finale : faire une fonction qui plot ce à quoi ressemble notre wagon à la fin 
