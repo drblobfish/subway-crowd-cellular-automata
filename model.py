@@ -119,6 +119,7 @@ class MODEL() :
         self.plotManager.clear()
 
     def play_model(self,t):
+        self.plot_Nb()
         for i in range (0,t):
             self.newStep()
             self.clear() 
