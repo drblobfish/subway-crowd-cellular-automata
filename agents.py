@@ -24,7 +24,7 @@ class AGENT():
         min_dist = self.model.n + self.model.m
         for i in [-1,0,1]:
             for j in [-1,0,1]:
-                pos = (self.pos[0]+i,self.pos[0]+j)
+                pos = (self.pos[0]+i,self.pos[1]+j)
                 if self.model.isValidPosition(pos) and (not self.model.walls[pos]):
                     dist = self.dist_btw(pos,self.goal)
                     if dist<min_dist:
