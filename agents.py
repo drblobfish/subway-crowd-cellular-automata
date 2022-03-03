@@ -27,6 +27,7 @@ class AGENT():
                 distance[x1,y2] = self.dist((x1,y2))
             self.goal = min(distance, key = distance.get)
         if self.model.agent_allowed_to_stand_up == False:
+            print(self.model.agent_allowed_to_stand_up)
             for i in self.model.restCells : 
                 if self.pos == i.pos : 
                     self.goal = self.pos 
