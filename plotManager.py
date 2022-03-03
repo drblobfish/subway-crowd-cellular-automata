@@ -1,9 +1,10 @@
-from IPython.display import display, HTML
+import IPython.display
 
 class PLOTMANAGER():
     def __init__(self):
         self.wallColor = ["white","grey"]
         pass
+    
     def plotNb(self,model):
 
         html = f'<svg width="{20*model.m}" height="{20*model.n}">'
@@ -18,6 +19,8 @@ class PLOTMANAGER():
             html += f'<circle cx="{agent.pos[1] *20 + 10 }" cy="{agent.pos[0] *20 + 10 }" r="8" fill="red" />'
         html += '</svg>'
 
-        chart = HTML(html)
-        # or chart = charts.plot(...)
-        display(chart)
+        chart = IPython.display.HTML(html)
+        IPython.display.display(chart)
+    
+    def clear(self):
+        IPython.display.clear_output()
