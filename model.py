@@ -3,6 +3,8 @@ import constant as c
 import matplotlib.pyplot as plt
 import numpy as np
 from collections import defaultdict
+import time
+
 
 from agents import AGENT
 from restCell import RESTCELL
@@ -116,6 +118,7 @@ class MODEL() :
 
     def play_model(self,t):
         for i in range (0,t):
+            time.sleep(1)
             self.newStep()
             self.clear() 
             self.plot_Nb()
