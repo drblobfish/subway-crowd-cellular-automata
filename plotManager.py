@@ -32,8 +32,8 @@ class PLOTMANAGER():
         IPython.display.display(chart)
         #self.saveImage(model)
     
-    def saveImage(self,model):
-        self.hti.screenshot( html_str=self.html, save_as='red_page.png', size=(20*model.m +20, 20*model.n+20))
+    def saveImage(self,model,name):
+        self.hti.screenshot( html_str=self.html, save_as = name + '.png', size=(20*model.m +20, 20*model.n+20))
 
 
     
