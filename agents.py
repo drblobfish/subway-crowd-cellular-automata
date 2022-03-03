@@ -8,6 +8,13 @@ class AGENT():
         self.model = model
 
     def findGoal(self,comfort):
+        comfort = comfort.copy()
+        for i in [-1,0,1] :
+            for j in [-1,0,1]:
+                moore = (self.pos[0]+i, self.pos[1]+j)
+                if self.model.isValidPosition(moore) :
+                    comfort[moore]+= 5
+
         higher_value = np.where(comfort == np.max(comfort))
         if len(higher_value[0]) == 1:
             self.goal = (higher_value[0][0],higher_value[1][0])
