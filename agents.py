@@ -1,8 +1,6 @@
 import math
 import numpy as np
 import constant as c
-from model import MODEL
-from restCell import RESTCELL
 
 class AGENT():
     def __init__(self,pos,model,name="" ) -> None:
