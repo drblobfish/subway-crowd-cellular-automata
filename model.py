@@ -117,9 +117,9 @@ class MODEL() :
 
     def play_model(self,t):
         for i in range (0,t):
-            sleep(1)
             self.clear() 
             self.plot_Nb()
+            sleep(1)
             
 
 if __name__ == "__main__":
