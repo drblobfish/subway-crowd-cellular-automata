@@ -23,6 +23,7 @@ class MODEL() :
         self.comfort = np.zeros((self.n,self.m))
         self.walls = np.zeros((self.n,self.m),dtype=int)
         self.walls = self.metroGen.generateBaseWalls(self.n,self.m)
+        self.agent_allowed_to_stand_up = []
 
         self.verbose = True
         self.plotManager = PLOTMANAGER()
@@ -121,6 +122,7 @@ class MODEL() :
     def play_model(self,t):
         self.plot_Nb()
         for i in range (0,t):
+            self.clear() 
             self.newStep()
             self.clear() 
             self.plot_Nb()
