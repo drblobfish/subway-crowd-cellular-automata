@@ -117,8 +117,9 @@ class MODEL() :
     def play_model(self,t):
         for i in range (0,t):
             self.newStep()
-            self.plot_Nb()
             self.clear() 
+            self.plot_Nb()
+            
 
 if __name__ == "__main__":
     mymodel = MODEL(3,4)
