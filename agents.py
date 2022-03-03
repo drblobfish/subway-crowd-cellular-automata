@@ -8,9 +8,10 @@ class AGENT():
         self.pos = pos
         self.model = model
         self.name = name
-        agent_allowed_to_stand_up= "yes" 
+         
 
     def findGoal(self,comfort):
+        agent_allowed_to_stand_up= "yes"
         comfort = comfort.copy()
         for i in [-1,0,1] :
             for j in [-1,0,1]:
