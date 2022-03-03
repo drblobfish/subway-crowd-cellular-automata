@@ -27,7 +27,7 @@ class AGENT():
                 (x1,y2) = (higher_value[0][i],higher_value[1][i])
                 distance[x1,y2] = self.dist((x1,y2))
             self.goal = min(distance, key = distance.get)
-        for i in MODEL.restCells : 
+        for i in self.model.restCells : 
             if self.pos == i.pos : 
                 self.goal = self.pos 
         return self.goal
