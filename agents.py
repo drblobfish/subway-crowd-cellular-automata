@@ -3,9 +3,10 @@ import numpy as np
 
 
 class AGENT():
-    def __init__(self,pos,model ) -> None:
+    def __init__(self,pos,model,name="" ) -> None:
         self.pos = pos
         self.model = model
+        self.name = name
 
     def findGoal(self,comfort):
         comfort = comfort.copy()

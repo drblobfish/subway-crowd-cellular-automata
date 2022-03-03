@@ -1,8 +1,6 @@
 import IPython.display
 from html2image import Html2Image
 
-
-
 class PLOTMANAGER():
     def __init__(self):
         self.wallColor = ["white","grey"]
@@ -21,6 +19,7 @@ class PLOTMANAGER():
         
         for agent in model.agents:
             html += f'<circle cx="{agent.pos[1] *20 + 10 }" cy="{agent.pos[0] *20 + 10 }" r="8" fill="red" />'
+            html += f'<text x="{agent.pos[1] *20+5}" y="{agent.pos[0] *20+15 }" font-family="Arial" font-size="15">{agent.name}</text>'
         
         html += '</svg>'
 
