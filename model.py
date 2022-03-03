@@ -64,7 +64,7 @@ class MODEL() :
                 for j in [-1,0,1]:
                     moore = (agent.pos[0]+i, agent.pos[1]+j)
                     if self.isValidPosition(moore) :
-                        self.comfort[moore]+= -5
+                        self.comfort[moore]+= c.MalusAgent[1+i,1+j]
             
         #if it's a restcell, we add the value of its comfort: 
         for restCell in self.restCells:
@@ -117,8 +117,8 @@ class MODEL() :
 
     def play_model(self,t):
         for i in range (0,t):
-            self.clear() 
             self.newStep()
+            self.clear() 
             self.plot_Nb()
             sleep(1)
             

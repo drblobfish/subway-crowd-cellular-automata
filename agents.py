@@ -1,5 +1,6 @@
 import math
 import numpy as np
+import constant as c
 
 
 class AGENT():
@@ -14,7 +15,7 @@ class AGENT():
             for j in [-1,0,1]:
                 moore = (self.pos[0]+i, self.pos[1]+j)
                 if self.model.isValidPosition(moore) :
-                    comfort[moore]+= 5
+                    comfort[moore]+= -c.MalusAgent[1+i,1+j]
 
         higher_value = np.where(comfort == np.max(comfort))
         if len(higher_value[0]) == 1:
