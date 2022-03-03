@@ -16,10 +16,13 @@ class MODEL() :
         self.n = n
         self.m = m
 
+        self.metroGen = METROGENERATOR(n,m)
+
         self.agents = []
         self.restCells = []
         self.comfort = np.zeros((self.n,self.m))
         self.walls = np.zeros((self.n,self.m),dtype=int)
+        self.walls = self.metroGen.generateBaseWalls(self.n,self.m)
 
         self.verbose = True
         self.plotManager = PLOTMANAGER()
