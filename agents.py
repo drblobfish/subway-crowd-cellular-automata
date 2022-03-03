@@ -28,8 +28,8 @@ class AGENT():
                 distance[x1,y2] = self.dist((x1,y2))
             self.goal = min(distance, key = distance.get)
         for i in MODEL.restCells : 
-        if self.pos == i.pos : 
-            self.goal = self.pos 
+            if self.pos == i.pos : 
+                self.goal = self.pos 
         return self.goal
 
 
