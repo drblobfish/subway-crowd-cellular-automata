@@ -6,7 +6,7 @@ from html2image import Html2Image
 class PLOTMANAGER():
     def __init__(self):
         self.wallColor = ["white","grey"]
-        self.hti = Html2Image()
+        self.hti = Html2Image(output_path='renders')
         pass
 
     def generateHtml(self,model):
