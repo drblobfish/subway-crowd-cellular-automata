@@ -9,6 +9,7 @@ from restCell import RESTCELL
 from metroGenerator import METROGENERATOR
 from plotManager import PLOTMANAGER
 
+
 class MODEL() :
     def __init__(self,n,m) -> None:
         self.n = n
@@ -109,7 +110,15 @@ class MODEL() :
     
     def plot_Nb(self):
         self.plotManager.plotNb(self)
-
+    
+    def clear(self):
+        self.plotManager.clear(self)
+        
+    def play_model(self,t):
+        for i in range (0,t):
+            self.newStep()
+            self.plot_Nb()
+            self.clear() 
 
 if __name__ == "__main__":
     mymodel = MODEL(3,4)
@@ -118,3 +127,5 @@ if __name__ == "__main__":
     
     mymodel.newStep()
     mymodel.newStep()
+
+    
