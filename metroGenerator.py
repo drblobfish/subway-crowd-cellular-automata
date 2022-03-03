@@ -16,10 +16,10 @@ class METROGENERATOR():
             metromap[n-1,i]=1
         for i in range (0,n):
             metromap[i,0]=1
-        for i in range (i,n):
+        for i in range (0,n):
             metromap[i,m-1]=1
         metromap[n-1,2]=0
         metromap[n-1,3]=0
         metromap[n-1,(m-3)]=0
-        metromap[n-1,(m-2)]=0
+        metromap[n-1,(m-4)]=0
         return metromap
