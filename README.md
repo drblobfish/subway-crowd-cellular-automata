@@ -6,9 +6,13 @@ We want to model the flow and distribution of agents evolving in a subway wagon 
 
 We propose a cellular automata model describing the interaction between agents, walls of the metro, seats, and rest position (ie. next to the walls and to the metal poles).
 
+## Demo
+
+Python notebook `model_testing.ipynb` contains somewhat clean demos of our model.
+
 ## Our model
 
-[To do]
+See our poster and final report in `documentation` for explaination on our model.
 
 ## Links
 
@@ -16,6 +20,7 @@ More information as well as pdf of our daily reports can be found on [our CRI pr
 
 ## Context
 
-This code is produced as an assignment during the Modelisation Project Week in the Frontiers of Life Bachelor (Center for Interdisciplinary Research, University of Paris).
+This code is produced as an assignment during the Modelisation Project Week in the [Frontiers of Life Bachelor](https://licence.learningplanetinstitute.org/fr) (Center for Interdisciplinary Research, University of Paris).
+
 With Antoine  Bergel and Anton  François as Teachers.
 
